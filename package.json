@@ -1,0 +1,23 @@
+{
+  "name": "nockturnal",
+  "version": "0.0.0",
+  "description": "A simplyfying recorder for nock, the HTTP request mocker for node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "nock",
+    "http",
+    "request",
+    "node",
+    "node.js",
+    "record"
+  ],
+  "author": "Shishir Ramam",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "nock": "^0.57.0"
+  }
+}
