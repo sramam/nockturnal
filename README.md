@@ -15,37 +15,35 @@ If you use other advanced features of nock, we still got you covered!
 
 # Installing
 
-`npm install nockturnal`
+    npm install nockturnal
 
 # How to use
 
-`// in test/test_file.js
-
-var place_holders = {
-        key1: place_holder1,
-        key2: place_holder2
-    },
-    nockturnal = require(‘nockturnal)(‘app_name’, {
-        folders: {
-            fixtures: ‘test/fixtures’ // folder to find/store fixtures in
+    // in test/test_file.js
+    
+    var place_holders = {
+            key1: place_holder1,
+            key2: place_holder2
         },
-        place_holders: {
-            key1: place_holder1
-        }
+        nockturnal = require(‘nockturnal)(‘app_name’, {
+            folders: {
+                fixtures: ‘test/fixtures’ // folder to find/store fixtures in
+            },
+            place_holders: {
+                key1: place_holder1
+            }
+        });
+    
+    describe(‘my_app’, function(){
+        before(function() {
+            nockturnal.before();
+        });
+    
+        // ... your regular tests
+    
+        after(function(done) {
+            nockturnal.after(done);
+        });
     });
-
-describe(‘my_app’, function(){
-    before(function() {
-        nockturnal.before();
-    });
-
-    // ... your regular tests
-
-    after(function(done) {
-        nockturnal.after(done);
-    });
-});
-
-`
 
 
