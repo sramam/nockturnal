@@ -21,6 +21,7 @@ If you use other advanced features of nock, we still got you covered!
 
     // in test/test_file.js
     
+    // all occurances of key1 will be replace with place_holder1 in the fixtures stored.
     var place_holders = {
             key1: place_holder1,
             key2: place_holder2
