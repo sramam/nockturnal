@@ -1,5 +1,5 @@
 # nockturnal
-A simplyfying recorder for nock, the HTTP request mocker for node.
+A simplyfying recorder for [nock](https://github.com/pgte/nock), the HTTP request mocker for node.
 
 `nockturnal` is inspired by the nock recorder described by 
 [Diana Thayer](https://orchestrate.io/blog/2014/06/13/how-to-test-code-that-uses-http-apis-using-node-js-mocha-and-nock/).
