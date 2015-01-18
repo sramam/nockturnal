@@ -6,7 +6,6 @@ module.exports = function (name, options) {
   // options tell us where to store our fixtures
   var defaults = {
       folders: {
-          test: 'test',
           fixtures: 'test/fixtures'
       },
       place_holders: {
