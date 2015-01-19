@@ -26,16 +26,16 @@ If you use other advanced features of nock, we still got you covered!
             key1: place_holder1,
             key2: place_holder2
         },
-        nockturnal = require(‘nockturnal)(‘app_name’, {
+        nockturnal = require("nockturnal")("app_name", {
             folders: {
-                fixtures: ‘test/fixtures’ // folder to find/store fixtures in
+                fixtures: "test/fixtures" // folder to find/store fixtures in
             },
             place_holders: {
                 key1: place_holder1
             }
         });
     
-    describe(‘my_app’, function(){
+    describe("my_app", function(){
         before(function() {
             nockturnal.before();
         });
