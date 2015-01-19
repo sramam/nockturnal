@@ -1,6 +1,6 @@
 {
   "name": "nockturnal",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A simplifying recorder for nock, the HTTP request mocker for node.",
   "main": "index.js",
   "scripts": {
