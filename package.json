@@ -1,6 +1,6 @@
 {
   "name": "nockturnal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "`nockturnal` is a test-helper module for mocha that wraps nock, enabling unit-testing 3rd party REST APIs on CI servers.",
   "main": "index.js",
   "scripts": {
