@@ -1,7 +1,7 @@
 {
   "name": "nockturnal",
-  "version": "0.0.2",
-  "description": "A simplifying recorder for nock, the HTTP request mocker for node.",
+  "version": "0.1.0",
+  "description": "`nockturnal` is a test-helper module for mocha that wraps nock, enabling unit-testing 3rd party REST APIs on CI servers.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

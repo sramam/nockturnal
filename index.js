@@ -10,7 +10,13 @@ module.exports = function (name, options) {
       },
       place_holders: {
           // 'orig': 'place_holder'
-      }
+      },
+      enable_reqbody_recording: [
+        // {
+        // path: '/some/uri',
+        // enabled: true/false
+        // }
+      ]
   };
   options = _.merge({}, defaults, options);
   var fix_file = path.join('.', options.folders.fixtures, name + '.json'),
@@ -18,8 +24,8 @@ module.exports = function (name, options) {
       make_fix_dir = function(fix_file) {
           var fix_dir = path.dirname(fix_file);
           if (!fs.existsSync(fix_dir)) {
-              console.log('creating fixtures directory:' + fix_dir);
               fs.mkdirSync(fix_dir);
+              console.log('created fixtures directory:' + fix_dir);
           }
       }(fix_file);
   return {
@@ -36,12 +42,21 @@ module.exports = function (name, options) {
               str_contents = str_contents.replace(re, key);
           });
           // parse the JSON string
-          var nocksDefs = JSON.parse(str_contents);
+          var nockDefs = JSON.parse(str_contents);
+          // adding support for request body filtering
+          _(options.enable_reqbody_recording).each(function(opt) {
+            nockDefs.forEach(function(elem) {
+              if(elem.path == opt.path &&
+                 opt.enabled === false) {
+                elem.body = "*";
+              }
+            });
+          });
           if (callback) {
               callback(nockDefs);
           }
           // define the nocks we'll use for the tests
-          nock.define(nocksDefs);
+          nock.define(nockDefs);
           has_fixtures = true;
         } catch (err) {
             // ignore file not exist error, we'll record and create it.
