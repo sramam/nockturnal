@@ -30,7 +30,8 @@ module.exports = function (name, options) {
       }(fix_file);
   return {
     // starts recording, or ensure the fixtures exist
-    before: function (callback) {
+    before: function () {
+      var callback = (arguments.length === 1) ? arguments[0]: null;
       if (!has_fixtures) {
         try {
           // read json as string
@@ -74,7 +75,8 @@ module.exports = function (name, options) {
       }
     },
     // saves our recording if fixtures didn't already exist
-    after: function (done, callback) {
+    after: function (done) {
+      var callback = (arguments.length === 2) ? arguments[1]: null;
       if (!has_fixtures) {
         var fixtures = nock.recorder.play(),
             place_holders = options.place_holders;
