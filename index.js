@@ -11,6 +11,8 @@ module.exports = function (name, options) {
       place_holders: {
           // 'orig': 'place_holder'
       },
+      exclude_scope: [],
+        //['https://127.0.0.1:3000']
       enable_reqbody_recording: [
         // {
         // path: '/some/uri',
@@ -20,7 +22,7 @@ module.exports = function (name, options) {
   };
   options = _.merge({}, defaults, options);
   var fix_file = path.join('.', options.folders.fixtures, name + '.json'),
-      has_fixtures = !!process.env.NOCK_RECORD, 
+      has_fixtures = !!process.env.NOCK_RECORD,
       make_fix_dir = function(fix_file) {
           var fix_dir = path.dirname(fix_file);
           if (!fs.existsSync(fix_dir)) {
@@ -79,7 +81,10 @@ module.exports = function (name, options) {
       var callback = (arguments.length === 2) ? arguments[1]: null;
       if (!has_fixtures) {
         var fixtures = nock.recorder.play(),
-            place_holders = options.place_holders;
+            place_holders = options.place_holders
+
+        fixtures = removeExcludedScopeFromArray(fixtures, options.exclude_scope);
+
         if (callback) {
             callback(fixtures);
         }
@@ -94,3 +99,24 @@ module.exports = function (name, options) {
     }
   };
 };
+
+function removeExcludedScopeFromArray(fixtures, scope) {
+  scope = [].concat(scope);
+
+  if (!scope.length) {
+    return fixtures;
+  }
+
+  return fixtures.reduce(function(result, fixture) {
+    var shouldExclude = scope.some(function(url) {
+      return fixture.scope.indexOf(url) > -1;
+    });
+
+    if (!shouldExclude) {
+      result.push(fixture);
+    }
+
+    return result;
+  }, []);
+}
+
