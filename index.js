@@ -81,7 +81,7 @@ module.exports = function (name, options) {
       var callback = (arguments.length === 2) ? arguments[1]: null;
       if (!has_fixtures) {
         var fixtures = nock.recorder.play(),
-            place_holders = options.place_holders
+            place_holders = options.place_holders;
 
         fixtures = removeExcludedScopeFromArray(fixtures, options.exclude_scope);
 
