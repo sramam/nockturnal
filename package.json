@@ -17,8 +17,8 @@
   "author": "Shishir Ramam",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^2.4.1",
-    "nock": "^0.57.0"
+    "lodash": "^4.17.20",
+    "nock": "^8.0.0"
   },
   "devDependencies": {},
   "repository": {
